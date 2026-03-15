@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: replicacontroller
+  namespace: krishna
+spec:
+  replicas: 2
+  selector:
+    app: replica
+  template: 
+    metadata:
+      name: replicacontainer
+      labels:
+        app: replica
+    spec:
+      containers:
+       - name: repliacpods
+         image: krishna639/krishna6:1.0.1
+         ports:
+           - containerPort: 8080

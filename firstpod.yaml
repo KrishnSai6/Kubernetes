@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: firstPod
+  label:
+    app: krish
+  namespace: krishna
+spec:
+  containers:
+    - name: krishnapod
+      image: krishna639/krishna6:1.0.1
+      ports:
+        - containerPort: 80
