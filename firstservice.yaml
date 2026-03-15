@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: firstservice
+  namespace: krishna
+spec:
+  selector:
+    app: krish
+  ports:
+    - port: 80
+      targetPort: 8080
