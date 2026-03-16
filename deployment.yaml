@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentpod
+  namespace: krishna
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deploymentapp
+  template:
+    metadata:
+      labels:
+        app: deploymentapp
+    spec:
+      containers:  
+       - name: deploymentapplication
+         image: krishna639/krishna6:1.0.1
+         ports:
+          - containerPort: 9000
