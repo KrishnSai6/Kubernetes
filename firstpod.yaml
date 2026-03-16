@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Pod
 metadata: 
-  name: firstPod
-  label:
+  name: firstpod
+  labels:
     app: krish
   namespace: krishna
 spec:
