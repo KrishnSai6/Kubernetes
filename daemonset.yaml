@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: deamonsetpod
+  namespace: krishna
+spec:
+  selector:
+    matchLabels:
+      app: daemonapp
+  template:
+    metadata:
+      name: daemonapptemp
+      labels:
+        app: daemonapp
+    spec:
+      containers:
+        - name: daemonapplication
+          image: krishna639/krishna6:1.0.1
+          ports:
+            - containerPort: 9000 
