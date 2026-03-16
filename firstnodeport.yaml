@@ -9,5 +9,5 @@ spec:
     app: replicationcon
   ports:
     - port: 80
-      targetPort: 9000
+      targetPort: 8080
       nodePort: 32410

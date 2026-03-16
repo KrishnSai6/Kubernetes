@@ -6,15 +6,15 @@ metadata:
 spec:
   replicas: 2
   selector:
-    app: replica
+    app: replicationcon
   template: 
     metadata:
       name: replicacontainer
       labels:
-        app: replica
+        app: replicationcon
     spec:
       containers:
        - name: repliacpods
          image: krishna639/krishna6:1.0.1
          ports:
-           - containerPort: 8080
+           - containerPort: 9000
