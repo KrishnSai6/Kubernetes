@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resource
+  namespace: krishna
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: resourceadd
+  template:
+    metadata:
+      labels:
+        app: resourceadd
+    spec:
+      containers:
+        - name: addingresources
+          image: krishna639/krishna6:1.0.1
+          ports:
+           - containerPort: 9000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 400Mi
+            limits:
+              cpu: 100m
+              memory: 400Mi
