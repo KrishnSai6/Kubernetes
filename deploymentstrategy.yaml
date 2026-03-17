@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymentsta
+  namespace: krishna
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: deploymentrecreate
+  template:
+    metadata:
+      name: deployment
+      labels:
+        app: deploymentrecreate
+    spec:
+      containers:
+        - name: deploymantcontainer
+          image: krishna639/krishna6:1.0.1
+          ports:
+            - containerPort: 9000
