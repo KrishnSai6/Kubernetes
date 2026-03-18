@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nfsvolume
+  namespace: krishna
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfsvolume
+  template:
+    metadata:
+      name: nfsvolumepod
+      namespace: krishna
+      labels:
+        app: nfsvolume
+    spec:
+      containers:
+        - name: mongocon
+          image: mongo
+          ports:
+            - containerPort: 27017
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: devdb
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: devdb@123
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 150m
+              memory: 150Mi
+          volumeMounts:
+            - name: mongovolume
+              mountPath: /data/db
+      volumes:
+         - name: mongovolume
+           nfs:
+             server: 172.31.16.150
+             path: /opt/data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfsservice
+  namespace: krishna
+spec:
+  selector:
+    app: nfsvolume
+  ports:
+    - port: 27017
+      targetPort: 27017
