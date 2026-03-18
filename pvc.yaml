@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistanceVolumeClaim
+metadat:
+  name: nfs-pvc
+  namespace: krishna
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+PersistentVolumeClaim       storage: 1Gi
