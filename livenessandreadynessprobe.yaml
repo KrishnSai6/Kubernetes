@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: livenessreadyness
+  namespace: krishna
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: livereadyness
+  template:
+    metadata:
+      name: livenessreadynesspod
+      namespace: krishna
+      labels:
+        app: livereadyness
+    spec:
+      containers:
+        - name: livenessreadynesscon
+          image: krishna639/krishna6:1.0.1
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 150m
+              memory: 150Mi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 3
+            failureThreshold: 4
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 3
+            failureThreshold: 4
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: livereadynesssvc
+  namespace: krishna
+spec:
+  type: NodePort
+  selector:
+    app: livereadyness
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 32121
