@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap
+  namespace: krishna
+data:
+  username: "krishna"
+  mountpath: "/data/db"
+  hostpath: "nfs/data"

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secretemap
+  namespace: krishna
+type: Opaque
+stringData:
+  password: "krishnasai#123"
