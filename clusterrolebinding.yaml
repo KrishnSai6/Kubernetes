@@ -1,13 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
-  name: rolebinding
-  namespace: krishna
+  name: clusterrolebinding
 subjects:
   - kind: User
     name: mamtha
     apiGroup: rbac.authorization.k8s.io
 roleRef:
-  kind: Role
-  name: creatingpod
+  kind: ClusterRole
+  name: clusterrole
   apiGroup: rbac.authorization.k8s.io
