@@ -4,7 +4,7 @@ metadata:
   name: replicacontroller
   namespace: krishna
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     app: replicationcon
   template: 

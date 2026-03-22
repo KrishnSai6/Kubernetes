@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: netpolicies
+  namespace: krishna
+spec:
+  podSelector:
+    matchLabels:
+      app: volumecon
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: replicationcon
+      ports:
+        - protocol: TCP
+          port: 27017
